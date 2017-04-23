@@ -1,0 +1,14 @@
+.game__frame {
+	border: 12px solid #C0C0C0;
+}
+
+.game__border {
+  	border-width:6px;
+    border-style:solid;
+    border-color: #808080 #fff #fff #808080;
+}
+
+.game__separator {
+	height: 12px;
+	background-color: #C0C0C0;
+}

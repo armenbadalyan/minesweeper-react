@@ -1,0 +1,31 @@
+.statboard {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+}
+
+.start-button {
+	background-color: #C0C0C0;
+	width: calc(100% * (1/8)  - 6px);
+	padding-top: calc(100% * (1/8)  - 6px);	
+	border-width:3px;
+    border-style:solid;
+    border-color:#fff #808080 #808080 #fff;
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.start-button__alive {
+	background-image: url('../../assets/face_alive.svg');
+}
+
+.start-button__win {
+	background-image: url('../../assets/face_win.svg');
+}
+
+.start-button__lost {
+	background-image: url('../../assets/face_lost.svg');
+}

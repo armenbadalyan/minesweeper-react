@@ -1,0 +1,68 @@
+.cell {
+	position: absolute;
+	box-sizing: border-box;
+	background-color: #C0C0C0;
+	width: 20px;
+	height: 20px;
+	border-width:3px;
+    border-style:solid;
+    border-color:#fff #808080 #808080 #fff;
+    background-size: 75% 75%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.cell__open {
+	border: none;
+	border-bottom: 1px solid #818181;
+	border-left: 1px solid #818181;
+}
+
+.cell__flagged {
+	background-image: url('../../assets/flag.svg');		
+}
+
+.cell__mine {
+	background-image: url('../../assets/mine.svg');	
+}
+
+.cell__mine--mistake {
+	background-image: url('../../assets/mine-mistake.svg');	
+}
+
+.cell__mine--exploded {
+	background-color: #FC371E;
+}
+
+.cell__open--mine-1 {
+	background-image: url('../../assets/mine-1.svg');
+}
+
+.cell__open--mine-2 {
+	background-image: url('../../assets/mine-2.svg');
+}
+
+.cell__open--mine-3 {
+	background-image: url('../../assets/mine-3.svg');
+}
+
+.cell__open--mine-4 {
+	background-image: url('../../assets/mine-4.svg');
+}
+
+.cell__open--mine-5 {
+	background-image: url('../../assets/mine-5.svg');
+}
+
+.cell__open--mine-6 {
+	background-image: url('../../assets/mine-6.svg');
+}
+
+.cell__open--mine-7 {
+	background-image: url('../../assets/mine-7.svg');
+}
+
+.cell__open--mine-8 {
+	background-image: url('../../assets/mine-8.svg');
+}
+

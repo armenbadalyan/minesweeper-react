@@ -13,8 +13,6 @@ const IN_PROGRESS = 'inprogress';
 const WON = 'won';
 const LOST = 'lost';
 
-let openSteps = 0;
-
 class Game extends Component {
 
     constructor(props) {
@@ -26,7 +24,8 @@ class Game extends Component {
     }
 
     getInitialGameState() {
-        return {
+
+        let state = {
             game: {
                 status: NEW,
                 startedAt: null,
@@ -38,6 +37,10 @@ class Game extends Component {
                 cells: this.createCells(ROWS, COLS)
             }
         }
+
+        state.field = this.countMines(this.plantMines(state.field, MINES))
+
+        return state;
     }
 
     createCells(rows, cols) {
@@ -74,7 +77,7 @@ class Game extends Component {
                     startedAt: new Date(),
                     totalMines: MINES
                 },
-                field: this.countMines(this.plantMines(cell, state.field, MINES))
+                field: state.field
             });
         } else {
             return state;
@@ -85,15 +88,20 @@ class Game extends Component {
         this.setState(this.getInitialGameState());
     }
 
-    plantMines(cell, field, mineCount) {
+    plantMines(field, mineCount) {
         let mineCells = {},
+            cellKeys = Object.keys(field.cells),
             rows = field.rows,
             cols = field.cols;
 
         mineCells = [...Array(mineCount).keys()].reduce((prev, i) => {
-            let row = Math.floor(Math.random() * rows),
+            /*let row = Math.floor(Math.random() * rows),
                 col = Math.floor(Math.random() * cols),
-                id = row + ':' + col;
+                id = row + ':' + col;*/
+            let index = Math.floor(Math.random() * cellKeys.length),
+                id = cellKeys[index];
+
+            cellKeys.splice(index, 1);
 
             prev[id] = this.setCellAttribute(field.cells[id], 'mine', true);
 
@@ -166,11 +174,11 @@ class Game extends Component {
     }
 
     openCell(cell, field) {
-        let newField = field;        
+        let newField = field;
 
         if (cell.mine) {
-        	cell.exploded = true;
-        	cell.closed = false;
+            cell.exploded = true;
+            cell.closed = false;
         } else {
 
             let cellStack = [cell];
@@ -179,22 +187,12 @@ class Game extends Component {
 
             while (cellStack.length) {
                 cell = cellStack.shift();
-                openSteps++;
 
                 if (cell.minesAround === 0) {
                     this.getNeighbourCells(cell, newField)
                         .filter(cell => cell.closed && !cell.flagged)
                         .forEach(cell => {
-                            /*newField = {
-                                ...newField,
-                                cells: {
-                                    ...newField.cells,
-                                    [cell.id]: this.setCellAttribute(cell, 'closed', false)
-                                }
-                            };*/
-
                             cell.closed = false;
-
                             cellStack.push(cell);
                         });
                 }
@@ -202,10 +200,10 @@ class Game extends Component {
         }
 
         return {
-                ...field,
-                cells: newField.cells
-            };
-    	}
+            ...field,
+            cells: newField.cells
+        };
+    }
 
     quickOpen(cell, field) {
         if (cell.minesAround > 0) {
@@ -337,8 +335,6 @@ class Game extends Component {
 
     handleCellClick(id) {
 
-        openSteps = 0;
-
         let state = this.startGameIfNeeded(this.state.field.cells[id], this.state),
             cell = state.field.cells[id],
             field = state.field;
@@ -357,9 +353,6 @@ class Game extends Component {
             game: state.game,
             field: state.field
         });
-
-        console.log('Open steps: ', openSteps);
-
     }
 
     handleCellAltClick(id) {

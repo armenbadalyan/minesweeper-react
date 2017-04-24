@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import LCD from '../lcd/lcd.js';
 import './timer.css'
 
 export class Timer extends PureComponent {
@@ -17,17 +18,17 @@ export class Timer extends PureComponent {
     componentWillReceiveProps(nextProps) {
         switch (nextProps.status) {
         case 'inprogress':
-        	if (!this.timerID) {
-        		this.startedAt = nextProps.startedAt;
-            	this.tick();
-        	}            
+            if (!this.timerID) {
+                this.startedAt = nextProps.startedAt;
+                this.tick();
+            }
             break;
         case 'new':
             this.setState({
                 secondsElapsed: 0
             });
         default:
-            if (this.timerID) {                
+            if (this.timerID) {
                 clearTimeout(this.timerID);
                 this.timerID = null;
             }
@@ -41,8 +42,10 @@ export class Timer extends PureComponent {
         this.timerID = setTimeout(this.tick, 1000);
     }
 
-    render() {
-        return <span className="timer">{this.state.secondsElapsed}</span>
+    render() {   	
+
+        return <LCD className="timer" value={this.state.secondsElapsed} />
+	        	
     }
 }
 

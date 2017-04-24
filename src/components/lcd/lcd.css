@@ -1,0 +1,59 @@
+.lcd {
+	background-color: #000;
+    /* box-sizing: border-box; */
+    /* width: 120px; */
+    height: 2em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #808080 #fff #fff #808080;
+    padding: 2px;
+    font-size: 20px;
+}
+
+.digit {	
+	background-size: contain;    
+    background-repeat: no-repeat;
+    width: 1.19em;
+    height: 2em;
+    display: inline-block;
+}
+
+.digit__0 {
+	background-image: url('../../assets/d-0.svg');
+}
+
+.digit__1 {
+	background-image: url('../../assets/d-1.svg');
+}
+
+.digit__2 {
+	background-image: url('../../assets/d-2.svg');
+}
+
+.digit__3 {
+	background-image: url('../../assets/d-3.svg');
+}
+
+.digit__4 {
+	background-image: url('../../assets/d-4.svg');
+}
+
+.digit__5 {
+	background-image: url('../../assets/d-5.svg');
+}
+
+.digit__6 {
+	background-image: url('../../assets/d-6.svg');
+}
+
+.digit__7 {
+	background-image: url('../../assets/d-7.svg');
+}
+
+.digit__8 {
+	background-image: url('../../assets/d-8.svg');
+}
+
+.digit__9 {
+	background-image: url('../../assets/d-9.svg');
+}

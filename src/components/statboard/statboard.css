@@ -8,8 +8,8 @@
 
 .start-button {
 	background-color: #C0C0C0;
-	width: calc(100% * (1/8)  - 6px);
-	padding-top: calc(100% * (1/8)  - 6px);	
+	width: 40px;
+	height: 40px;
 	border-width:3px;
     border-style:solid;
     border-color:#fff #808080 #808080 #fff;

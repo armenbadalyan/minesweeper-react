@@ -7,18 +7,25 @@ export class OpenCell extends PureComponent {
     render() {
 
     	const props = this.props;
-        let className = 'cell__open ';
+
+        let icon = '',
+        	className = 'cell__open ';
        
         if (props.exploded) {
-        	className += 'cell__mine cell__mine--exploded'
+        	icon = 'mine'
+        	className += 'cell__mine--exploded';
         }
+        else if (this.props.mistake) {
+            icon = 'mine-mistake';
+        } 
         else if (props.hasMine) {
-            className += 'cell__mine ';
+            icon = 'mine';
+
         }
         else if (this.props.minesAround > 0) {
-            className += 'cell__open--mine-' + this.props.minesAround;
+            icon = 'mine-' + this.props.minesAround;
         }
 
-        return <Cell className={className} {...this.props}></Cell>
+        return <Cell icon={icon} className={className} {...this.props}></Cell>
     }
 }

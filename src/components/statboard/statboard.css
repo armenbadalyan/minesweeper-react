@@ -13,19 +13,12 @@
 	border-width:3px;
     border-style:solid;
     border-color:#fff #808080 #808080 #fff;
-    background-size: 75%;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.start-button__alive {
-	background-image: url('../../assets/face_alive.svg');
-}
-
-.start-button__win {
-	background-image: url('../../assets/face_win.svg');
-}
-
-.start-button__lost {
-	background-image: url('../../assets/face_lost.svg');
+.start-button__icon {
+	width: 90%;
+	height: 90%;
 }

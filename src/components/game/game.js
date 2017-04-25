@@ -90,9 +90,7 @@ class Game extends Component {
 
     plantMines(field, mineCount) {
         let mineCells = {},
-            cellKeys = Object.keys(field.cells),
-            rows = field.rows,
-            cols = field.cols;
+            cellKeys = Object.keys(field.cells);         
 
         mineCells = [...Array(mineCount).keys()].reduce((prev, i) => {
             /*let row = Math.floor(Math.random() * rows),
@@ -307,7 +305,7 @@ class Game extends Component {
                     ...prevField,
                     cells: {
                         ...prevField.cells,
-                        [key]: this.setCellAttribute(prevField.cells[key], 'mistake', true)
+                        [key]: this.setCellAttribute(this.setCellAttribute(prevField.cells[key], 'mistake', true), 'closed', false)
                     }
                 }
             }, field)

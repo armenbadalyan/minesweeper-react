@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import Icon from '../shared/icon.js';
 import './cell.css';
 
 
@@ -34,6 +35,8 @@ export class Cell extends PureComponent {
 				top: this.props.row * this.props.height + 'px'
 			}
 			
-		return <div className={'cell ' + className} style={style} onClick={this.handleClick} onContextMenu={this.handleContextMenu}></div>
+		return <div className={'cell ' + className} style={style} onClick={this.handleClick} onContextMenu={this.handleContextMenu}>
+			<Icon className="cell__icon" asset={this.props.icon} />			
+		</div>
 	}	
 }

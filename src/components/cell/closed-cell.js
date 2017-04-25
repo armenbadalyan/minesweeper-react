@@ -4,17 +4,14 @@ import './cell.css'
 
 
 export class ClosedCell extends PureComponent {
-	render() {
+    render() {
 
-		let className = '';
+        let icon = '';
 
-		if (this.props.mistake) {
-        	className = 'cell__mine cell__mine--mistake';
+        if (this.props.flagged) {
+            icon = 'flag';
         }
-        else if (this.props.flagged) {
-        	className = 'cell__flagged';
-        }
-		
-		return <Cell className={className} {...this.props}></Cell>;
-	}
+
+        return <Cell icon={icon} {...this.props}></Cell>;
+    }
 }

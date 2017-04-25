@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
-import './lcd.css'
+import Icon from '../shared/icon.js';
+import './lcd.css';
 
-export class LCD extends PureComponent {   
-
-
+class LCD extends PureComponent {
     render() {
 
     	let d1,
@@ -12,22 +11,20 @@ export class LCD extends PureComponent {
     		currentDigit,
     		value = this.props.value;
 
-    	d1 = d2 = d3 = 'digit ';
-
     	currentDigit = Math.floor(value / 100);
-    	d1 += `digit__${currentDigit}`;
+    	d1 = `d-${currentDigit}`;
 
     	value -= currentDigit*100;
     	currentDigit = Math.floor(value / 10);
-    	d2 += `digit__${currentDigit}`;
+    	d2 = `d-${currentDigit}`;
 
     	value -= currentDigit*10;
-    	d3 += `digit__${value}`;
+    	d3 = `d-${value}`;
 
         return <span className="lcd">
-	        	<div className={d1}></div>
-	        	<div className={d2}></div>
-	        	<div className={d3}></div>
+                <Icon className="digit" asset={d1} />
+	        	<Icon className="digit" asset={d2} />
+                <Icon className="digit" asset={d3} />	        	
         	</span>
     }
 }

@@ -59,8 +59,7 @@ class Minefield extends PureComponent {
                         cellId={cell.id}
                         row={cell.row}
                         col={cell.col}
-                        flagged={cell.flagged}
-                        mistake={cell.mistake}
+                        flagged={cell.flagged}                        
                         width={this.state.cellWidth}
                         height={this.state.cellHeight}
                         onCellClick={this.props.onCellClick} onCellAltClick={this.props.onCellAltClick} />
@@ -70,7 +69,8 @@ class Minefield extends PureComponent {
                         cellId={cell.id}
                         row={cell.row}
                         col={cell.col}
-                        exploded={cell.exploded}                        
+                        exploded={cell.exploded}       
+                        mistake={cell.mistake}                 
                         minesAround={cell.minesAround}
                         hasMine={cell.mine}
                         width={this.state.cellWidth}
